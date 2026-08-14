@@ -700,7 +700,7 @@ declare(strict_types=1);
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <div class="eyebrow">Desde 1999 · Sua obra na mão</div>
+          <div class="eyebrow">Desde 1985 · Sua obra na mão</div>
           <h1>Materiais que sustentam <em>sua obra</em>.</h1>
           <p>
             Cimento, tijolos, tintas e revestimentos de primeira linha com o
