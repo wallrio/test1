@@ -8,25 +8,27 @@ declare(strict_types=1);
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <meta
       name="description"
-      content="Essência Perfumaria — fragrâncias exclusivas que revelam quem você é."
+      content="Constrular — materiais de construção com preço justo, entrega rápida e atendimento de quem entende de obra."
     />
-    <title>Essência Perfumaria | Fragrâncias Exclusivas</title>
+    <title>Constrular | Materiais de Construção</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
-      href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;0,600;1,400&family=Inter:wght@300;400;500;600&display=swap"
+      href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:ital,wght@0,400;0,500;0,600;0,700;1,500&family=Inter:wght@300;400;500;600;700&display=swap"
       rel="stylesheet"
     />
     <style>
       :root {
-        --gold: #b08d57;
-        --gold-light: #d4b57a;
-        --dark: #141210;
-        --dark-2: #1d1a17;
-        --cream: #f6f1e7;
-        --text: #2a2520;
-        --muted: #8a8076;
-        --serif: "Cormorant Garamond", Georgia, serif;
+        --yellow: #f5b301;
+        --yellow-dark: #d99c00;
+        --orange: #e86a17;
+        --dark: #1c2321;
+        --dark-2: #262e2b;
+        --light: #f4f5f2;
+        --white: #ffffff;
+        --text: #2a322f;
+        --muted: #7c857f;
+        --display: "Barlow Condensed", "Arial Narrow", sans-serif;
         --sans: "Inter", system-ui, sans-serif;
       }
 
@@ -43,7 +45,7 @@ declare(strict_types=1);
       body {
         font-family: var(--sans);
         color: var(--text);
-        background: var(--cream);
+        background: var(--light);
         line-height: 1.6;
         overflow-x: hidden;
       }
@@ -61,14 +63,14 @@ declare(strict_types=1);
         left: 0;
         width: 100%;
         z-index: 50;
-        padding: 18px 0;
+        padding: 14px 0;
         transition: background 0.35s ease, box-shadow 0.35s ease;
       }
 
       header.scrolled {
-        background: rgba(20, 18, 16, 0.92);
+        background: rgba(28, 35, 33, 0.95);
         backdrop-filter: blur(8px);
-        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.25);
+        box-shadow: 0 4px 24px rgba(0, 0, 0, 0.3);
       }
 
       .nav-inner {
@@ -78,16 +80,17 @@ declare(strict_types=1);
       }
 
       .brand {
-        font-family: var(--serif);
-        font-size: 1.6rem;
+        font-family: var(--display);
+        font-size: 1.7rem;
         color: #fff;
-        letter-spacing: 2px;
+        letter-spacing: 1.5px;
         text-decoration: none;
-        font-weight: 600;
+        font-weight: 700;
+        text-transform: uppercase;
       }
 
       .brand span {
-        color: var(--gold-light);
+        color: var(--yellow);
       }
 
       nav ul {
@@ -97,16 +100,17 @@ declare(strict_types=1);
       }
 
       nav a {
-        color: rgba(255, 255, 255, 0.85);
+        color: rgba(255, 255, 255, 0.88);
         text-decoration: none;
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         letter-spacing: 1.5px;
         text-transform: uppercase;
+        font-weight: 500;
         transition: color 0.2s ease;
       }
 
       nav a:hover {
-        color: var(--gold-light);
+        color: var(--yellow);
       }
 
       .menu-toggle {
@@ -126,45 +130,63 @@ declare(strict_types=1);
         align-items: center;
         background: linear-gradient(
             135deg,
-            rgba(20, 18, 16, 0.85) 0%,
-            rgba(20, 18, 16, 0.45) 60%,
-            rgba(20, 18, 16, 0.75) 100%
+            rgba(28, 35, 33, 0.88) 0%,
+            rgba(28, 35, 33, 0.5) 60%,
+            rgba(28, 35, 33, 0.82) 100%
           ),
           url("hero.jpg") center/cover no-repeat, var(--dark);
       }
 
+      .hero::after {
+        content: "";
+        position: absolute;
+        right: 0;
+        bottom: 0;
+        width: 100%;
+        height: 8px;
+        background: repeating-linear-gradient(
+          -45deg,
+          var(--yellow) 0,
+          var(--yellow) 18px,
+          var(--dark) 18px,
+          var(--dark) 36px
+        );
+      }
+
       .hero-content {
-        max-width: 640px;
+        max-width: 660px;
         padding-top: 80px;
       }
 
       .hero .eyebrow {
-        color: var(--gold-light);
+        color: var(--yellow);
         font-size: 0.8rem;
         letter-spacing: 4px;
         text-transform: uppercase;
         margin-bottom: 18px;
+        font-weight: 600;
       }
 
       .hero h1 {
-        font-family: var(--serif);
-        font-weight: 500;
-        font-size: clamp(2.6rem, 6vw, 4.4rem);
-        line-height: 1.12;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2.8rem, 6vw, 4.6rem);
+        line-height: 1.05;
         color: #fff;
         margin-bottom: 22px;
+        text-transform: uppercase;
       }
 
       .hero h1 em {
         font-style: italic;
-        color: var(--gold-light);
+        color: var(--yellow);
       }
 
       .hero p {
-        color: rgba(255, 255, 255, 0.82);
+        color: rgba(255, 255, 255, 0.84);
         font-size: 1.05rem;
         font-weight: 300;
-        max-width: 480px;
+        max-width: 500px;
         margin-bottom: 34px;
       }
 
@@ -172,23 +194,24 @@ declare(strict_types=1);
         display: inline-block;
         padding: 15px 38px;
         font-family: var(--sans);
-        font-size: 0.85rem;
+        font-size: 0.82rem;
         letter-spacing: 2px;
         text-transform: uppercase;
+        font-weight: 600;
         text-decoration: none;
         cursor: pointer;
-        border: 1px solid var(--gold);
+        border: 2px solid var(--yellow);
         transition: all 0.25s ease;
       }
 
-      .btn-gold {
-        background: var(--gold);
-        color: #fff;
+      .btn-yellow {
+        background: var(--yellow);
+        color: var(--dark);
       }
 
-      .btn-gold:hover {
+      .btn-yellow:hover {
         background: transparent;
-        color: var(--gold-light);
+        color: var(--yellow);
       }
 
       .btn-outline {
@@ -199,8 +222,8 @@ declare(strict_types=1);
       }
 
       .btn-outline:hover {
-        border-color: var(--gold-light);
-        color: var(--gold-light);
+        border-color: var(--yellow);
+        color: var(--yellow);
       }
 
       .hero-badge {
@@ -208,7 +231,7 @@ declare(strict_types=1);
         display: flex;
         align-items: center;
         gap: 12px;
-        color: rgba(255, 255, 255, 0.7);
+        color: rgba(255, 255, 255, 0.75);
         font-size: 0.78rem;
         letter-spacing: 2px;
         text-transform: uppercase;
@@ -217,8 +240,8 @@ declare(strict_types=1);
       .hero-badge::before {
         content: "";
         width: 40px;
-        height: 1px;
-        background: var(--gold);
+        height: 3px;
+        background: var(--yellow);
       }
 
       /* ---------- Sections ---------- */
@@ -233,18 +256,20 @@ declare(strict_types=1);
       }
 
       .section-head .eyebrow {
-        color: var(--gold);
+        color: var(--orange);
         font-size: 0.78rem;
         letter-spacing: 4px;
         text-transform: uppercase;
         margin-bottom: 14px;
+        font-weight: 700;
       }
 
       .section-head h2 {
-        font-family: var(--serif);
-        font-weight: 500;
-        font-size: clamp(2rem, 4vw, 3rem);
-        line-height: 1.15;
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
+        line-height: 1.1;
+        text-transform: uppercase;
       }
 
       .section-head p {
@@ -254,13 +279,13 @@ declare(strict_types=1);
       }
 
       .divider {
-        width: 52px;
-        height: 1px;
-        background: var(--gold);
+        width: 60px;
+        height: 4px;
+        background: var(--yellow);
         margin: 24px auto 0;
       }
 
-      /* ---------- Collection ---------- */
+      /* ---------- Products ---------- */
       .grid {
         display: grid;
         grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
@@ -268,84 +293,70 @@ declare(strict_types=1);
       }
 
       .card {
-        background: #fff;
+        background: var(--white);
         padding: 28px 24px;
         text-align: center;
         transition: transform 0.3s ease, box-shadow 0.3s ease;
         position: relative;
         overflow: hidden;
+        border-top: 4px solid var(--yellow);
       }
 
       .card:hover {
         transform: translateY(-8px);
-        box-shadow: 0 24px 48px rgba(20, 18, 16, 0.12);
+        box-shadow: 0 24px 48px rgba(28, 35, 33, 0.14);
       }
 
-      .card .bottle {
-        height: 190px;
+      .card .product-img {
+        height: 210px;
         display: flex;
-        align-items: flex-end;
+        align-items: center;
         justify-content: center;
-        margin-bottom: 24px;
+        margin-bottom: 20px;
         position: relative;
+        overflow: hidden;
       }
 
-      .bottle-shape {
-        width: 72px;
-        height: 150px;
-        border-radius: 8px 8px 24px 24px;
-        position: relative;
-        background: linear-gradient(160deg, #fdfcf9, #dcd3c2);
-        box-shadow: inset 0 0 0 1px rgba(0, 0, 0, 0.06), 0 12px 28px rgba(0, 0, 0, 0.16);
+      .card .product-img img {
+        width: 100%;
+        height: 100%;
+        object-fit: cover;
+        transition: transform 0.35s ease;
       }
 
-      .bottle-shape::before {
-        content: "";
+      .card:hover .product-img img {
+        transform: scale(1.06);
+      }
+
+      .card .tag {
         position: absolute;
-        top: -34px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 26px;
-        height: 46px;
-        background: #222;
-        border-radius: 3px 3px 0 0;
-      }
-
-      .bottle-shape::after {
-        content: "";
-        position: absolute;
-        top: 38px;
-        left: 50%;
-        transform: translateX(-50%);
-        width: 58%;
-        height: 22%;
-        background: rgba(176, 141, 87, 0.18);
-        border-radius: 2px;
-      }
-
-      .bottle.light::before {
-        background: #e9e4da;
-      }
-      .bottle.amber::before {
-        background: #6b4f2a;
-      }
-      .bottle.black::before {
-        background: #181512;
+        top: 14px;
+        left: 14px;
+        background: var(--orange);
+        color: #fff;
+        font-size: 0.68rem;
+        font-weight: 700;
+        letter-spacing: 1.5px;
+        text-transform: uppercase;
+        padding: 5px 10px;
       }
 
       .card h3 {
-        font-family: var(--serif);
-        font-size: 1.5rem;
-        font-weight: 600;
-        margin-bottom: 6px;
+        font-family: var(--display);
+        font-size: 1.55rem;
+        font-weight: 700;
+        margin-bottom: 4px;
+        text-transform: uppercase;
+        letter-spacing: 1px;
       }
 
       .card .note {
-        font-size: 0.78rem;
+        font-size: 0.75rem;
         letter-spacing: 2px;
         text-transform: uppercase;
-        color: var(--gold);
+        color: var(--orange);
         margin-bottom: 12px;
+        font-weight: 600;
       }
 
       .card p {
@@ -356,29 +367,38 @@ declare(strict_types=1);
       }
 
       .card .price {
-        font-family: var(--serif);
-        font-size: 1.35rem;
+        font-family: var(--display);
+        font-size: 1.5rem;
+        font-weight: 700;
         color: var(--dark);
+      }
+
+      .card .price small {
+        font-family: var(--sans);
+        font-size: 0.72rem;
+        color: var(--muted);
+        font-weight: 400;
       }
 
       .card .buy {
         display: block;
         margin: 16px auto 0;
-        padding: 10px 30px;
-        border: 1px solid var(--dark);
+        padding: 11px 30px;
+        border: 2px solid var(--dark);
         background: transparent;
         color: var(--dark);
         font-family: var(--sans);
-        font-size: 0.75rem;
+        font-size: 0.74rem;
         letter-spacing: 2px;
         text-transform: uppercase;
+        font-weight: 600;
         cursor: pointer;
         transition: all 0.25s ease;
       }
 
       .card .buy:hover {
-        background: var(--dark);
-        color: var(--cream);
+        background: var(--yellow);
+        border-color: var(--yellow);
       }
 
       .toast {
@@ -395,7 +415,7 @@ declare(strict_types=1);
         opacity: 0;
         transition: all 0.35s ease;
         z-index: 100;
-        border-left: 3px solid var(--gold);
+        border-left: 4px solid var(--yellow);
       }
 
       .toast.show {
@@ -417,19 +437,21 @@ declare(strict_types=1);
       }
 
       .about .eyebrow {
-        color: var(--gold-light);
+        color: var(--yellow);
         font-size: 0.78rem;
         letter-spacing: 4px;
         text-transform: uppercase;
         margin-bottom: 14px;
+        font-weight: 700;
       }
 
       .about h2 {
-        font-family: var(--serif);
-        font-weight: 500;
-        font-size: clamp(2rem, 4vw, 3rem);
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2.2rem, 4vw, 3.2rem);
         margin-bottom: 24px;
-        line-height: 1.15;
+        line-height: 1.1;
+        text-transform: uppercase;
       }
 
       .about p {
@@ -440,19 +462,20 @@ declare(strict_types=1);
 
       .about .image {
         height: 420px;
-        background: linear-gradient(135deg, #2b2620, #171412),
+        background: linear-gradient(135deg, #333c38, #141a18),
           url("craft.jpg") center/cover no-repeat;
-        border: 1px solid rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.1);
         display: flex;
         align-items: flex-end;
         padding: 28px;
       }
 
       .about .image span {
-        color: var(--gold-light);
+        color: var(--yellow);
         font-size: 0.75rem;
         letter-spacing: 3px;
         text-transform: uppercase;
+        font-weight: 600;
       }
 
       .features {
@@ -464,15 +487,16 @@ declare(strict_types=1);
       }
 
       .feature .num {
-        font-family: var(--serif);
-        font-size: 2.4rem;
-        color: var(--gold-light);
+        font-family: var(--display);
+        font-size: 2.6rem;
+        color: var(--yellow);
         line-height: 1;
         margin-bottom: 10px;
+        font-weight: 700;
       }
 
       .feature .label {
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         letter-spacing: 2px;
         text-transform: uppercase;
         color: rgba(255, 255, 255, 0.65);
@@ -480,7 +504,7 @@ declare(strict_types=1);
 
       /* ---------- Testimonials ---------- */
       .testimonials {
-        background: #fff;
+        background: var(--white);
       }
 
       .quote-grid {
@@ -491,44 +515,47 @@ declare(strict_types=1);
 
       .quote {
         padding: 36px 30px;
-        border: 1px solid #ece5d8;
-        background: var(--cream);
+        border: 1px solid #e3e6e0;
+        background: var(--light);
       }
 
       .quote .stars {
-        color: var(--gold);
+        color: var(--yellow-dark);
         letter-spacing: 4px;
         margin-bottom: 16px;
         font-size: 0.9rem;
       }
 
       .quote p {
-        font-family: var(--serif);
+        font-family: var(--display);
         font-style: italic;
-        font-size: 1.2rem;
+        font-size: 1.25rem;
         margin-bottom: 18px;
+        color: var(--dark);
       }
 
       .quote cite {
         font-style: normal;
-        font-size: 0.78rem;
+        font-size: 0.76rem;
         letter-spacing: 2px;
         text-transform: uppercase;
         color: var(--muted);
+        font-weight: 600;
       }
 
       /* ---------- Newsletter ---------- */
       .newsletter {
-        background: linear-gradient(135deg, #171412, #2b2620);
+        background: linear-gradient(135deg, var(--dark-2), #101412);
         color: #fff;
         text-align: center;
       }
 
       .newsletter h2 {
-        font-family: var(--serif);
-        font-weight: 500;
-        font-size: clamp(1.8rem, 3.5vw, 2.6rem);
+        font-family: var(--display);
+        font-weight: 700;
+        font-size: clamp(2rem, 3.5vw, 2.8rem);
         margin-bottom: 14px;
+        text-transform: uppercase;
       }
 
       .newsletter p {
@@ -560,20 +587,21 @@ declare(strict_types=1);
       }
 
       form button {
-        background: var(--gold);
+        background: var(--yellow);
         border: none;
-        color: #fff;
+        color: var(--dark);
         padding: 0 26px;
         font-family: var(--sans);
-        font-size: 0.8rem;
+        font-size: 0.78rem;
         letter-spacing: 2px;
         text-transform: uppercase;
+        font-weight: 700;
         cursor: pointer;
         transition: background 0.25s ease;
       }
 
       form button:hover {
-        background: var(--gold-light);
+        background: var(--yellow-dark);
       }
 
       /* ---------- Footer ---------- */
@@ -585,7 +613,7 @@ declare(strict_types=1);
       }
 
       footer .brand {
-        font-size: 1.4rem;
+        font-size: 1.5rem;
         display: block;
         margin-bottom: 10px;
       }
@@ -612,7 +640,7 @@ declare(strict_types=1);
       }
 
       .socials a:hover {
-        color: var(--gold-light);
+        color: var(--yellow);
       }
 
       /* ---------- Responsive ---------- */
@@ -623,7 +651,7 @@ declare(strict_types=1);
           top: 100%;
           left: 0;
           width: 100%;
-          background: rgba(20, 18, 16, 0.97);
+          background: rgba(28, 35, 33, 0.97);
           flex-direction: column;
           padding: 24px;
           gap: 22px;
@@ -656,11 +684,11 @@ declare(strict_types=1);
   <body>
     <header id="header">
       <div class="container nav-inner">
-        <a href="#" class="brand">Essência<span>.</span></a>
+        <a href="#" class="brand">Constrular<span>.</span></a>
         <nav>
           <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
           <ul id="navList">
-            <li><a href="#colecao">Coleção</a></li>
+            <li><a href="#produtos">Produtos</a></li>
             <li><a href="#sobre">Sobre</a></li>
             <li><a href="#depoimentos">Depoimentos</a></li>
             <li><a href="#contato">Contato</a></li>
@@ -672,58 +700,68 @@ declare(strict_types=1);
     <section class="hero">
       <div class="container">
         <div class="hero-content">
-          <div class="eyebrow">Maison de Perfumes</div>
-          <h1>A essência que revela <em>quem você é</em>.</h1>
+          <div class="eyebrow">Desde 1994 · Sua obra na mão</div>
+          <h1>Materiais que sustentam <em>sua obra</em>.</h1>
           <p>
-            Fragrâncias exclusivas criadas por perfumistas renomados, extraídas
-            de ingredientes raros selecionados ao redor do mundo.
+            Cimento, tijolos, tintas e revestimentos de primeira linha com o
+            melhor preço da região e entrega rápida no canteiro ou na sua casa.
           </p>
-          <a href="#colecao" class="btn btn-gold">Descobrir Coleção</a>
+          <a href="#produtos" class="btn btn-yellow">Ver Ofertas</a>
           <a href="#sobre" class="btn btn-outline">Nossa História</a>
-          <div class="hero-badge">Edição Limitada 2026 · Água de Perfume 50ml</div>
+          <div class="hero-badge">Atacado e varejo · Frete grátis acima de R$ 500</div>
         </div>
       </div>
     </section>
 
-    <section id="colecao">
+    <section id="produtos">
       <div class="container">
         <div class="section-head">
-          <div class="eyebrow">Nossa Coleção</div>
-          <h2>Quatro assinaturas, uma personalidade</h2>
+          <div class="eyebrow">Nossos Produtos</div>
+          <h2>Destaques da semana</h2>
           <div class="divider"></div>
         </div>
         <div class="grid" id="productGrid">
           <div class="card">
-            <div class="bottle"><div class="bottle-shape light"></div></div>
-            <h3>Ámbar Blanc</h3>
-            <div class="note">Floral · Amadeirado</div>
-            <p>Baunilha cremosa, flor de laranjeira e âmbar — uma pele aveludada que hipnotiza.</p>
-            <div class="price">R$ 429</div>
-            <button class="buy" data-name="Ámbar Blanc">Adicionar</button>
+            <div class="product-img">
+              <span class="tag">Mais vendido</span>
+              <img src="img/cimento.svg" alt="Saco de cimento CP-II de 50kg" />
+            </div>
+            <h3>Cimento CP-II</h3>
+            <div class="note">Saco 50kg</div>
+            <p>Cimento de alta resistência para fundações, alvenaria e acabamentos.</p>
+            <div class="price">R$ 34,90 <small>a unidade</small></div>
+            <button class="buy" data-name="Cimento CP-II">Adicionar</button>
           </div>
           <div class="card">
-            <div class="bottle"><div class="bottle-shape amber"></div></div>
-            <h3>Nuit Noire</h3>
-            <div class="note">Amadeirado · Especiado</div>
-            <p>Sândalo, açafrão e couro escuro — intensidade para as noites mais marcantes.</p>
-            <div class="price">R$ 489</div>
-            <button class="buy" data-name="Nuit Noire">Adicionar</button>
+            <div class="product-img">
+              <img src="img/tijolos.svg" alt="Pilha de tijolos cerâmicos" />
+            </div>
+            <h3>Tijolo Cerâmico</h3>
+            <div class="note">9x19x19 · Milheiro</div>
+            <p>Bloco estrutural resistente e de fácil assentamento para sua parede.</p>
+            <div class="price">R$ 1.199 <small>por milheiro</small></div>
+            <button class="buy" data-name="Tijolo Cerâmico">Adicionar</button>
           </div>
           <div class="card">
-            <div class="bottle"><div class="bottle-shape black"></div></div>
-            <h3>Velours</h3>
-            <div class="note">Oriental · Gourmand</div>
-            <p>Cacau amargo, fava tonka e patchouli — o conforto de um abraço em forma de perfume.</p>
-            <div class="price">R$ 519</div>
-            <button class="buy" data-name="Velours">Adicionar</button>
+            <div class="product-img">
+              <img src="img/tinta.svg" alt="Lata de tinta acrílica 18 litros" />
+            </div>
+            <h3>Tinta Acrílica</h3>
+            <div class="note">Lata 18L · Branca</div>
+            <p>Cobertura perfeita, lavável e com durabilidade para ambientes internos e externos.</p>
+            <div class="price">R$ 289,90 <small>a lata</small></div>
+            <button class="buy" data-name="Tinta Acrílica">Adicionar</button>
           </div>
           <div class="card">
-            <div class="bottle"><div class="bottle-shape light"></div></div>
-            <h3>Jardim de Crocus</h3>
-            <div class="note">Cítrico · Verde</div>
-            <p>Bergamota, folhas de violeta e musgo — frescor luminoso para o dia a dia.</p>
-            <div class="price">R$ 399</div>
-            <button class="buy" data-name="Jardim de Crocus">Adicionar</button>
+            <div class="product-img">
+              <span class="tag">Novo</span>
+              <img src="img/revestimento.svg" alt="Pisos e revestimentos cerâmicos" />
+            </div>
+            <h3>Revestimento 3D</h3>
+            <div class="note">Box 2,5m²</div>
+            <p>Porcelanato acetinado antiderrapante para pisos, paredes e fachadas.</p>
+            <div class="price">R$ 129,90 <small>o box</small></div>
+            <button class="buy" data-name="Revestimento 3D">Adicionar</button>
           </div>
         </div>
       </div>
@@ -733,34 +771,34 @@ declare(strict_types=1);
       <div class="container">
         <div class="about-grid">
           <div>
-            <div class="eyebrow">Desde 1987</div>
-            <h2>Um ateliê dedicado à arte da perfumaria</h2>
+            <div class="eyebrow">Mais de 30 anos</div>
+            <h2>Da primeira pá ao acabamento final</h2>
             <p>
-              Cada fragrância da Essência nasce de um ritual minucioso: a
-              seleção de matérias-primas em Grasse, na Provença, seguida de
-              meses de maturação em barris de carvalho.
+              A Constrular nasceu de um depósito familiar e hoje é referência em
+              materiais de construção na região, atendendo desde o pequeno
+              conserto até grandes empreendimentos.
             </p>
             <p>
-              Nosso compromisso é com a excelência — e com a memória afetiva
-              que um perfume é capaz de criar em cada pele.
+              Trabalhamos com as melhores marcas do mercado e uma equipe pronta
+              para calcular, orçar e entregar tudo o que a sua obra precisa.
             </p>
             <div class="features">
               <div class="feature">
-                <div class="num">38</div>
-                <div class="label">Anos de história</div>
+                <div class="num">30+</div>
+                <div class="label">Anos de mercado</div>
               </div>
               <div class="feature">
-                <div class="num">100%</div>
-                <div class="label">Ingredientes naturais</div>
+                <div class="num">5 mil</div>
+                <div class="label">Itens em estoque</div>
               </div>
               <div class="feature">
-                <div class="num">27</div>
-                <div class="label">Países atendidos</div>
+                <div class="num">24h</div>
+                <div class="label">Entrega expressa</div>
               </div>
             </div>
           </div>
           <div class="image">
-            <span>Ateliê de Grasse, França</span>
+            <span>Centro de distribuição</span>
           </div>
         </div>
       </div>
@@ -770,24 +808,24 @@ declare(strict_types=1);
       <div class="container">
         <div class="section-head">
           <div class="eyebrow">Depoimentos</div>
-          <h2>O que dizem sobre nós</h2>
+          <h2>Quem construiu com a gente</h2>
           <div class="divider"></div>
         </div>
         <div class="quote-grid">
           <div class="quote">
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p>"O Nuit Noire virou a minha assinatura. Recebo elogios todos os dias."</p>
-            <cite>Mariana Costa</cite>
+            <p>"Comprei o material da minha casa inteira aqui. Preço imbatível e entrega no dia seguinte."</p>
+            <cite>Carlos Menezes</cite>
           </div>
           <div class="quote">
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p>"Perfumes com personalidade rara. O ámbar dura o dia inteiro na minha pele."</p>
-            <cite>Rafael Almeida</cite>
+            <p>"O cimento chegou antes do prazo e o frete saiu grátis. Recomendo para qualquer construtor."</p>
+            <cite>Fernanda Duarte</cite>
           </div>
           <div class="quote">
             <div class="stars">&#9733;&#9733;&#9733;&#9733;&#9733;</div>
-            <p>"Presenteei minha mãe e ela disse que nunca recebeu algo tão especial."</p>
-            <cite>Beatriz Lemos</cite>
+            <p>"Atendimento nota dez. Calcularam a quantidade certa de tijolo e ainda deram desconto no atacado."</p>
+            <cite>Pedro Henrique Lima</cite>
           </div>
         </div>
       </div>
@@ -795,8 +833,8 @@ declare(strict_types=1);
 
     <section class="newsletter" id="contato">
       <div class="container">
-        <h2>Receba 10% de desconto</h2>
-        <p>Cadastre-se e seja o primeiro a conhecer os lançamentos da Maison.</p>
+        <h2>Receba ofertas e dicas de obra</h2>
+        <p>Cadastre-se e ganhe 10% de desconto na primeira compra.</p>
         <form id="newsForm">
           <input type="email" name="email" placeholder="Seu melhor e-mail" required />
           <button type="submit">Cadastrar</button>
@@ -806,8 +844,8 @@ declare(strict_types=1);
 
     <footer>
       <div class="container">
-        <a href="#" class="brand">Essência<span>.</span></a>
-        <p>© 2026 Essência Perfumaria · Todos os direitos reservados</p>
+        <a href="#" class="brand">Constrular<span>.</span></a>
+        <p>© 2026 Constrular Materiais de Construção · Todos os direitos reservados</p>
         <div class="socials">
           <a href="#">Instagram</a>
           <a href="#">Facebook</a>
@@ -816,7 +854,7 @@ declare(strict_types=1);
       </div>
     </footer>
 
-    <div class="toast" id="toast">Fragrância adicionada à sua seleção</div>
+    <div class="toast" id="toast">Produto adicionado ao seu carrinho</div>
 
     <script>
       const header = document.getElementById("header");
@@ -841,7 +879,7 @@ declare(strict_types=1);
       document.querySelectorAll(".buy").forEach((btn) => {
         btn.addEventListener("click", () => {
           toast.textContent =
-            "Fragrância \"" + btn.dataset.name + "\" adicionada à sua seleção";
+            "Produto \"" + btn.dataset.name + "\" adicionado ao seu carrinho";
           toast.classList.add("show");
           clearTimeout(toastTimer);
           toastTimer = setTimeout(() => toast.classList.remove("show"), 2600);

@@ -1,0 +1,31 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 500" width="400" height="500">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#f4f5f3"/>
+      <stop offset="1" stop-color="#dfe2dd"/>
+    </linearGradient>
+    <linearGradient id="bag" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#e8e8e4"/>
+      <stop offset="0.5" stop-color="#f7f7f3"/>
+      <stop offset="1" stop-color="#d5d6d0"/>
+    </linearGradient>
+    <linearGradient id="band" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0" stop-color="#1f5fbf"/>
+      <stop offset="0.5" stop-color="#2e76e0"/>
+      <stop offset="1" stop-color="#174a94"/>
+    </linearGradient>
+  </defs>
+  <rect width="400" height="500" fill="url(#bg)"/>
+  <ellipse cx="200" cy="452" rx="120" ry="18" fill="#000" opacity="0.12"/>
+  <g>
+    <path d="M120 96 l34 -26 q46 34 92 0 l34 26 l-20 314 q-53 24 -106 0 z" fill="url(#bag)"/>
+    <path d="M120 96 l34 -26 q46 34 92 0 l34 26 l-14 40 q-52 24 -98 0 z" fill="#d9d9d2"/>
+    <rect x="150" y="136" width="100" height="46" rx="4" fill="url(#band)"/>
+    <text x="200" y="156" font-family="Arial, sans-serif" font-size="15" font-weight="700" letter-spacing="3" fill="#fff" text-anchor="middle">CIMENTO</text>
+    <text x="200" y="174" font-family="Arial, sans-serif" font-size="11" font-weight="700" letter-spacing="2" fill="#fff" text-anchor="middle">CP-II 50KG</text>
+    <path d="M150 196 h100 q20 80 -8 170 h-84 q-28 -90 -8 -170 z" fill="#c9cac2"/>
+    <rect x="164" y="216" width="72" height="10" rx="3" fill="#fff" opacity="0.7"/>
+    <path d="M146 400 q54 20 108 0" fill="none" stroke="#bfc0b8" stroke-width="3" opacity="0.6"/>
+    <rect x="120" y="96" width="160" height="318" rx="6" fill="none" stroke="#b6b8b0" stroke-width="2" opacity="0.5"/>
+  </g>
+</svg>
