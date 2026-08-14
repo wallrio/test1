@@ -12,6 +12,7 @@ declare(strict_types=1);
     <main style="padding: 2rem; font-family: sans-serif">
       <h1>Hello from AI Platform</h1>
       <p>Start chatting to modify this PHP project.</p>
+      <img src="lula.jpg" alt="Foto oficial do Presidente Luiz Inácio Lula da Silva" style="max-width: 300px; border-radius: 8px; margin-top: 1rem" />
       <button style="background-color: blue; color: white; border: none; padding: 0.75rem 1.5rem; border-radius: 6px; cursor: pointer">test 1</button>
     </main>
   </body>
