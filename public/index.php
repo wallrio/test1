@@ -10,7 +10,7 @@ declare(strict_types=1);
       name="description"
       content="Constrular — materiais de construção com preço justo, entrega rápida e atendimento de quem entende de obra."
     />
-    <title>..Constrular | Materiais de Construção</title>
+    <title>...Constrular | Materiais de Construção</title>
     <link rel="preconnect" href="https://fonts.googleapis.com" />
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
     <link
