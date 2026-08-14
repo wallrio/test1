@@ -684,7 +684,7 @@ declare(strict_types=1);
   <body>
     <header id="header">
       <div class="container nav-inner">
-        <a href="#" class="brand">Constrular<span>.</span></a>
+        <a href="#" class="brand">Constrular<span>..</span></a>
         <nav>
           <button class="menu-toggle" id="menuToggle" aria-label="Abrir menu">&#9776;</button>
           <ul id="navList">
