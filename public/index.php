@@ -896,5 +896,246 @@ declare(strict_types=1);
         input.value = "";
       });
     </script>
-  </body>
+  <!-- fullcycle-inspector -->
+<script>(function () {
+  if (window.__fullcycleInspector) return;
+  window.__fullcycleInspector = true;
+
+  var overlay = null;
+  var box = null;
+  var start = null;
+  var active = false;
+  var highlightEl = null;
+  var highlightDocRect = null;
+
+  function post(type, payload) {
+    var msg = { type: type };
+    if (payload) {
+      for (var key in payload) {
+        if (Object.prototype.hasOwnProperty.call(payload, key)) msg[key] = payload[key];
+      }
+    }
+    window.parent.postMessage(msg, "*");
+  }
+
+  function removeBox() {
+    if (box && box.parentNode) box.parentNode.removeChild(box);
+    box = null;
+  }
+
+  function removeOverlay() {
+    if (overlay && overlay.parentNode) overlay.parentNode.removeChild(overlay);
+    overlay = null;
+  }
+
+  function clean() {
+    removeBox();
+    removeOverlay();
+    start = null;
+    active = false;
+    highlightEl = null;
+    highlightDocRect = null;
+    window.removeEventListener("scroll", onScroll, true);
+    window.removeEventListener("resize", onResize, true);
+    document.removeEventListener("keydown", onKeyDown, true);
+  }
+
+  function onKeyDown(event) {
+    if (event.key === "Escape") {
+      clean();
+      post("fc:inspect:cancel");
+    }
+  }
+
+  function makeOverlay() {
+    var el = document.createElement("div");
+    el.setAttribute("data-fc-inspector", "1");
+    el.style.cssText =
+      "position:fixed;top:0;left:0;width:100vw;height:100vh;z-index:2147483647;" +
+      "cursor:crosshair;background:rgba(0,0,0,0.02);";
+    document.documentElement.appendChild(el);
+    return el;
+  }
+
+  function makeBox() {
+    var el = document.createElement("div");
+    el.setAttribute("data-fc-inspector", "1");
+    el.style.cssText =
+      "position:fixed;z-index:2147483647;border:2px solid #4f8cff;" +
+      "box-shadow:0 0 0 1px rgba(255,255,255,0.7), 0 0 10px rgba(79,140,255,0.55);" +
+      "background:rgba(79,140,255,0.15);pointer-events:none;display:none;";
+    document.documentElement.appendChild(el);
+    return el;
+  }
+
+  function setBoxRect(x1, y1, x2, y2) {
+    var left = Math.min(x1, x2) - 2;
+    var top = Math.min(y1, y2) - 2;
+    var width = Math.abs(x2 - x1) + 4;
+    var height = Math.abs(y2 - y1) + 4;
+    box.style.left = left + "px";
+    box.style.top = top + "px";
+    box.style.width = width + "px";
+    box.style.height = height + "px";
+    box.style.display = "block";
+  }
+
+  function updateHighlight() {
+    if (!box || box.style.display === "none") return;
+    var r;
+    if (highlightEl) {
+      r = highlightEl.getBoundingClientRect();
+    } else if (highlightDocRect) {
+      r = {
+        left: highlightDocRect.left - window.scrollX,
+        top: highlightDocRect.top - window.scrollY,
+        width: highlightDocRect.width,
+        height: highlightDocRect.height
+      };
+    } else {
+      return;
+    }
+    if (r && r.width > 0 && r.height > 0) {
+      setBoxRect(r.left, r.top, r.left + r.width, r.top + r.height);
+    }
+  }
+
+  function onScroll() {
+    if (active) return;
+    updateHighlight();
+  }
+
+  function onResize() {
+    if (active) return;
+    updateHighlight();
+  }
+
+  function selectorFor(el) {
+    var parts = [];
+    var node = el;
+    while (node && node.nodeType === 1 && node.tagName.toLowerCase() !== "html" && parts.length < 5) {
+      var segment = node.tagName.toLowerCase();
+      if (node.id) {
+        segment += "#" + node.id;
+        parts.unshift(segment);
+        break;
+      }
+      if (node.classList && node.classList.length) {
+        segment += "." + Array.prototype.slice.call(node.classList, 0, 3).join(".");
+      }
+      parts.unshift(segment);
+      node = node.parentNode;
+    }
+    return parts.join(" > ");
+  }
+
+  function elementInfo(el) {
+    var rect = el.getBoundingClientRect();
+    var text = (el.textContent || "").replace(/\s+/g, " ").trim();
+    return {
+      tag: el.tagName.toLowerCase(),
+      id: el.id || null,
+      classes: el.classList && el.classList.length
+        ? Array.prototype.slice.call(el.classList).join(" ")
+        : null,
+      text: text ? text.slice(0, 80) : null,
+      selector: selectorFor(el),
+      rect: {
+        x: Math.round(rect.x),
+        y: Math.round(rect.y),
+        width: Math.round(rect.width),
+        height: Math.round(rect.height)
+      }
+    };
+  }
+
+  function onPointerDown(event) {
+    if (event.button !== 0) return;
+    start = { x: event.clientX, y: event.clientY };
+    setBoxRect(start.x, start.y, start.x, start.y);
+    event.preventDefault();
+  }
+
+  function onPointerMove(event) {
+    if (!start) return;
+    setBoxRect(start.x, start.y, event.clientX, event.clientY);
+    event.preventDefault();
+  }
+
+  function onPointerUp(event) {
+    if (!start) return;
+    var end = { x: event.clientX, y: event.clientY };
+    var deltaX = end.x - start.x;
+    var deltaY = end.y - start.y;
+    var isClick = Math.abs(deltaX) <= 5 && Math.abs(deltaY) <= 5;
+
+    var x;
+    var y;
+    var payload;
+    if (isClick) {
+      x = end.x;
+      y = end.y;
+      payload = { point: { x: Math.round(x), y: Math.round(y) } };
+    } else {
+      var left = Math.min(start.x, end.x);
+      var top = Math.min(start.y, end.y);
+      var width = Math.abs(deltaX);
+      var height = Math.abs(deltaY);
+      x = Math.round(left + width / 2);
+      y = Math.round(top + height / 2);
+      payload = {
+        rect: { x: Math.round(left), y: Math.round(top), width: Math.round(width), height: Math.round(height) }
+      };
+      highlightDocRect = {
+        left: left + window.scrollX,
+        top: top + window.scrollY,
+        width: width,
+        height: height
+      };
+    }
+
+    removeOverlay();
+    var element = document.elementFromPoint(x, y) || document.body;
+    payload.element = elementInfo(element);
+    payload.page = window.location.pathname || "/";
+
+    if (isClick) {
+      highlightEl = element;
+    }
+
+    window.addEventListener("scroll", onScroll, true);
+    window.addEventListener("resize", onResize, true);
+    updateHighlight();
+
+    start = null;
+    active = false;
+    post("fc:inspect:result", payload);
+  }
+
+  function enable() {
+    clean();
+    active = true;
+    overlay = makeOverlay();
+    box = makeBox();
+    overlay.addEventListener("pointerdown", onPointerDown, true);
+    overlay.addEventListener("pointermove", onPointerMove, true);
+    overlay.addEventListener("pointerup", onPointerUp, true);
+    document.addEventListener("keydown", onKeyDown, true);
+  }
+
+  function disable() {
+    clean();
+  }
+
+  window.addEventListener("message", function (event) {
+    var data = event.data;
+    if (!data || typeof data !== "object") return;
+    if (data.type === "fc:inspect:enable") enable();
+    else if (data.type === "fc:inspect:disable") disable();
+  });
+
+  post("fc:inspector:ready");
+})();
+</script>
+</body>
 </html>
